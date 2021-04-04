@@ -89,7 +89,7 @@ Os campos obrigatórios para cadastro do produto são `name` e `code` e ambos s�
 
 Endpoint:
 ```
-POST http://localhost/products
+POST http://localhost/api/v1/products
 ```
 
 | Parâmetro | Descrição |
@@ -136,7 +136,7 @@ Exemplo de atualização apenas do código de um produto.
 
 Endpoint:
 ```
-PUT http://localhost/products/`ID-PRODUCT`
+PUT http://localhost/api/v1/products/`ID-PRODUCT`
 ```
 
 + Request (application/json)
@@ -169,7 +169,7 @@ PUT http://localhost/products/`ID-PRODUCT`
 
 Endpoint:
 ```
-GET http://localhost/products/`ID-PRODUCT`
+GET http://localhost/api/v1/products/`ID-PRODUCT`
 ```
 + Response 200 (application/json)
 
@@ -194,7 +194,7 @@ GET http://localhost/products/`ID-PRODUCT`
 
 Endpoint:
 ```
-GET http://localhost/products
+GET http://localhost/api/v1/products
 ```
 + Response 200 (application/json)
 
@@ -229,6 +229,6 @@ GET http://localhost/products
 
 Endpoint:
 ```
-DELETE http://localhost/products/`ID-PRODUCT`
+DELETE http://localhost/api/v1/products/`ID-PRODUCT`
 ```
 + Response 204 (No Content)
