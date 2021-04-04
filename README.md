@@ -136,7 +136,7 @@ Exemplo de atualização apenas do código de um produto.
 
 Endpoint:
 ```
-PUT http://localhost/api/v1/products/`ID-PRODUCT`
+PUT http://localhost/api/v1/products/ID-PRODUCT
 ```
 
 + Request (application/json)
@@ -169,7 +169,7 @@ PUT http://localhost/api/v1/products/`ID-PRODUCT`
 
 Endpoint:
 ```
-GET http://localhost/api/v1/products/`ID-PRODUCT`
+GET http://localhost/api/v1/products/ID-PRODUCT
 ```
 + Response 200 (application/json)
 
@@ -229,6 +229,6 @@ GET http://localhost/api/v1/products
 
 Endpoint:
 ```
-DELETE http://localhost/api/v1/products/`ID-PRODUCT`
+DELETE http://localhost/api/v1/products/ID-PRODUCT
 ```
 + Response 204 (No Content)
