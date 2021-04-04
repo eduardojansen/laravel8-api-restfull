@@ -76,9 +76,8 @@ Requisições para a API devem seguir os padrões:
 
 ## Solicitando tokens de acesso [/oauth/access_token]
 
-### Utilizando o código de acesso [POST]
-Utilizando o `code` enviado pelo servidor de autorização, envie um POST com seus dados para receber um `access_token`.
-O `access_token` é válido por 15 minutos. Utilize o `refresh_token` para solicitar um novo `access_token`, para não solicitar ao usuário suas credenciais (login e senha) novamente.
+### Cadastrando produto [POST]
+Os campos obrigatórios para cadastro do produto são `name` e `code` e ambos são únicos, pois não podem ser repetidos no sistema.
 
 | Parâmetro | Descrição |
 |---|---|
