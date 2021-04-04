@@ -17,7 +17,9 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('code');
-            $table->string('size');
+            $table->string('size')->nullable();
+            $table->string('composition')->nullable();
+            $table->float('quantity', 8, 2)->nullable();
             $table->timestamps();
         });
     }

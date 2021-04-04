@@ -35,7 +35,7 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
         $product = Product::create(
-            $request->only('name', 'code', 'size')
+            $request->only('name', 'code', 'size', 'composition', 'quantity')
         );
 
         return new ProductResource($product);
@@ -61,7 +61,7 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        $product->update($request->only('name', 'code', 'size'));
+        $product->update($request->only('name', 'code', 'size', 'composition', 'quantity'));
 
         return new ProductResource($product);
     }

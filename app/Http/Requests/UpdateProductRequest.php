@@ -26,8 +26,9 @@ class UpdateProductRequest extends FormRequest
         return [
             'name' => 'min:3|max:100|unique:products,name,' . $this->route('product')->id,
             'code' => 'min:1|max:100|unique:products,code,' . $this->route('product')->id,
-            'size' => 'numeric'
-
+            'size' => 'max:255',
+            'quantity' => 'numeric',
+            'composition' => 'max:255'
         ];
     }
 }
