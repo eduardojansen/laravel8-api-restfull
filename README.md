@@ -17,11 +17,11 @@ Depois de clonar o sistema, é necessário instalar as dependências.
 
 ```
 $ cd laravel8-api-restfull
-$ composer install
+$ docker run --rm --interactive --tty --volume $PWD:/app composer install
 ```
 ## Executando Laravel Sail
 
-Para gerenciar o ambiente Docker com o Sail é bem simples, basta acessar o `./vendor/bin/sail` e em seguida o comando que você precisa executar.
+Para gerenciar o ambiente Docker com o Sail, basta excutar o arquivo `./vendor/bin/sail` e em seguida o comando que você precisa executar.
 
 O comando para “subir” o ambiente Docker do Laravel Sail é:
 
@@ -38,6 +38,8 @@ Para parar o servidor basta teclar `ctrl+c` ou, se estiver rodando em background
 
 Para acessar o projeto no navegador, basta acessar `http://localhost/`
 
+## Testando API
+
 Executar o comando Seed para que seja criado o usuário de testes da aplicação
 
 ```
@@ -52,6 +54,12 @@ fKXxVoVBbNcEm1sGcAW0S0hbCcro5C6AnCdPI56dXYNJmuSbv8wlPRCAN5DKKtFm17K55Y7F9OJXDONp
 ```
 
 Para testar a API, basta utilizar um software como o Postman ou Insominia. Para informar o token procure a opção de Authentication e seleciona o tipo `Bearer Token`, e informe o token acima.
+
+Adicionar no Header das requisições:
+* Content-Type
+   * application/json
+* Accept
+   * application/json
 
 ## Métodos
 Requisições para a API devem seguir os padrões:
@@ -74,10 +82,15 @@ Requisições para a API devem seguir os padrões:
 | `204` | indica que a solicitação foi bem sucedida. Utilizado após remoção com sucesso de um registro.|
 | `422` | Erro de valiação. Dados informados estão fora do escopo definido para o campo.|
 
-## Solicitando tokens de acesso [/oauth/access_token]
+## API de Produtos
 
 ### Cadastrando produto [POST]
 Os campos obrigatórios para cadastro do produto são `name` e `code` e ambos são únicos, pois não podem ser repetidos no sistema.
+
+Endpoint:
+```
+POST http://localhost/products
+```
 
 | Parâmetro | Descrição |
 |---|---|
@@ -110,6 +123,112 @@ Os campos obrigatórios para cadastro do produto são `name` e `code` e ambos s�
                     "name": "Kit Masculino",
                     "quantity": "10",
                     "size": "G",
-                    "composition": "Uma camisa e uma bermuda"
+                    "composition": "Uma camisa e uma bermuda",
+                    "updated_at": "2021-04-04T14:34:27.000000Z",
+                    "created_at": "2021-04-04T14:34:27.000000Z",
+                    "id": 3
                 }
             }
+
+### Editando produto [PUT]
+
+Exemplo de atualização apenas do código de um produto.
+
+Endpoint:
+```
+PUT http://localhost/products/`ID-PRODUCT`
+```
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "code": "8888",
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": {
+                    "code": "8888",
+                    "name": "Kit Masculino",
+                    "quantity": "10",
+                    "size": "G",
+                    "composition": "Uma camisa e uma bermuda",
+                    "updated_at": "2021-04-04T14:34:27.000000Z",
+                    "created_at": "2021-04-04T14:34:27.000000Z",
+                    "id": 3
+                }
+            }
+
+
+### Exibindo um produto [GET]
+
+Endpoint:
+```
+GET http://localhost/products/`ID-PRODUCT`
+```
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": 1,
+                        "name": "Kit Masculino",
+                        "code": "999",
+                        "size": "G",
+                        "composition": "Uma camisa e uma bermuda",
+                        "quantity": 5,
+                        "created_at": "2021-04-04T15:35:57.000000Z",
+                        "updated_at": "2021-04-04T15:35:57.000000Z"
+                    }
+                ]
+            }
+
+### Listando produtos [GET]
+
+Endpoint:
+```
+GET http://localhost/products
+```
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": 1,
+                        "name": "Kit Masculino",
+                        "code": "999",
+                        "size": "G",
+                        "composition": "Uma camisa e uma bermuda",
+                        "quantity": 5,
+                        "created_at": "2021-04-04T15:35:57.000000Z",
+                        "updated_at": "2021-04-04T15:35:57.000000Z"
+                    },
+                    {
+                        "id": 2,
+                        "name": "Kit Feminino",
+                        "code": "888",
+                        "size": "G",
+                        "composition": "Uma camisa e uma bermuda",
+                        "quantity": 10,
+                        "created_at": "2021-04-04T15:36:55.000000Z",
+                        "updated_at": "2021-04-04T15:36:55.000000Z"
+                    }
+                ]
+            }
+
+### Removendo produto [DELETE]
+
+Endpoint:
+```
+DELETE http://localhost/products/`ID-PRODUCT`
+```
++ Response 204 (No Content)
