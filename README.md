@@ -11,12 +11,12 @@ Esse projeto contempla o desenvolvimento de uma API RESTful de cadastro de produ
 Clone o repositório
 
 ```
-$ git clone https://github.com/
+$ git clone git@github.com:eduardojansen/laravel8-api-restfull.git
 ```
 Depois de clonar o sistema, é necessário instalar as dependências.
 
 ```
-$ cd laravel8-project-vesti
+$ cd laravel8-api-restfull
 $ composer install
 ```
 ## Executando Laravel Sail
@@ -51,4 +51,66 @@ API Token para testes
 fKXxVoVBbNcEm1sGcAW0S0hbCcro5C6AnCdPI56dXYNJmuSbv8wlPRCAN5DKKtFm17K55Y7F9OJXDONp
 ```
 
-Para testar a API, basta utilizar um software como o Postman ou Insominia. Para informar o token procure a opção de Authentication e seleciona o tipo `Bearer Token`, e cole o token e cole o token acima.
+Para testar a API, basta utilizar um software como o Postman ou Insominia. Para informar o token procure a opção de Authentication e seleciona o tipo `Bearer Token`, e informe o token acima.
+
+## Métodos
+Requisições para a API devem seguir os padrões:
+| Método | Descrição |
+|---|---|
+| `GET` | Retorna informações de um ou mais registros. |
+| `POST` | Utilizado para criar um novo registro. |
+| `PUT` | Atualiza dados de um registro. |
+| `DELETE` | Remove um registro do sistema. |
+
+## Respostas
+
+| Código | Descrição |
+|---|---|
+| `200` | Requisição executada com sucesso (success).|
+| `400` | Erros de validação ou os campos informados não existem no sistema.|
+| `401` | Usuário não autenticado no sistema.|
+| `404` | Registro pesquisado não encontrado (Not found).|
+| `405` | Método não implementado.|
+| `204` | indica que a solicitação foi bem sucedida. Utilizado após remoção com sucesso de um registro.|
+| `422` | Erro de valiação. Dados informados estão fora do escopo definido para o campo.|
+
+## Solicitando tokens de acesso [/oauth/access_token]
+
+### Utilizando o código de acesso [POST]
+Utilizando o `code` enviado pelo servidor de autorização, envie um POST com seus dados para receber um `access_token`.
+O `access_token` é válido por 15 minutos. Utilize o `refresh_token` para solicitar um novo `access_token`, para não solicitar ao usuário suas credenciais (login e senha) novamente.
+
+| Parâmetro | Descrição |
+|---|---|
+| `code` | Informar código único do produto |
+| `name` | Informar nome único do produto. |
+| `quantity` | Informar a quantidade do produto. |
+| `size` | Informar o tamanho do produto |
+| `composition` | Informar a composição do produto |
+
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "code": "99999",
+                "name": "Kit Masculino",
+                "quantity": "10",
+                "size": "G",
+                "composition": "Uma camisa e uma bermuda"
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": {
+                    "code": "99999",
+                    "name": "Kit Masculino",
+                    "quantity": "10",
+                    "size": "G",
+                    "composition": "Uma camisa e uma bermuda"
+                }
+            }
