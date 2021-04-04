@@ -40,6 +40,8 @@ class ProductTest extends TestCase
                         'name',
                         'code',
                         'size',
+                        'composition',
+                        'quantity',
                         'created_at',
                         'updated_at'
                     ]
@@ -62,8 +64,10 @@ class ProductTest extends TestCase
 
         $data_product =  [
             'code' => '19837',
-            'name' => 'Pro3duct Name',
-            'size' => '103'
+            'name' => 'Kit Masculino',
+            'size' => '103',
+            'composition' => 'Calça e Camisa',
+            'quantity' => '2',
         ];
 
         $this->actingAs($user, 'api')->json('POST', '/api/v1/products', $data_product)
