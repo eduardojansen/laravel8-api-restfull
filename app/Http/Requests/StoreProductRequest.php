@@ -23,7 +23,6 @@ class StoreProductRequest extends FormRequest
      */
     public function rules()
     {
-        // return [];
         return [
             'name' => 'required|min:3|max:100|unique:products',
             'code' => 'required|min:1|max:100|unique:products',

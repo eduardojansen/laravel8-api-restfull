@@ -49,7 +49,6 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        dd($product->toArray());
         return new ProductResource($product);
     }
 
