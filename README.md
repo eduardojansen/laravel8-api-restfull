@@ -232,3 +232,7 @@ Endpoint:
 DELETE http://localhost/api/v1/products/ID-PRODUCT
 ```
 + Response 204 (No Content)
+
+## Logs
+
+Todos os logs de alterações nos registros estão sendo armazenadas na tabela `activity_log`
