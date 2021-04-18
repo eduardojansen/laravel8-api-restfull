@@ -1,6 +1,6 @@
 # Projeto
 
-Esse projeto contempla o desenvolvimento de uma API RESTful de cadastro simples de produtos, usando Laravel 8 em um ambiente docker com PHP na versão 8.
+Esse projeto contempla o desenvolvimento de uma API RESTful de cadastro simples de produtos usando Laravel 8 em um ambiente docker com PHP na versão 8. O objetivo foi testar pequenas funcionalidades, como CRUD usando API REST,  cadastro apenas por usuário autenticado com passagem de token no header da requisição, logs de alteração sendo armazenados no bando de dados e testes com *HTTP Tests*. 
 
 ## Requisitos para instalar a aplicação
 
