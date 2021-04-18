@@ -21,7 +21,7 @@ $ docker run --rm --interactive --tty --volume $PWD:/app composer install
 ```
 ## Executando Laravel Sail
 
-Para gerenciar o ambiente Docker com o Sail, basta excutar o arquivo `./vendor/bin/sail` e em seguida o comando que você precisa executar.
+Para gerenciar o ambiente Docker com o Sail, basta executar o arquivo `./vendor/bin/sail` e em seguida o comando que você precisa executar.
 
 O comando para “subir” o ambiente Docker do Laravel Sail é:
 
